@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Código Aleatorio</title>
+  <link rel="stylesheet" href="generar.css">
+  
+</head>
+<body>
+  <div class="container">
+    <h1>Generador</h1>
+
+    <!-- Botón de cupones -->
+    <button onclick="mostrarCodigo()">Generar Cupon Disney</button>
+    <div id="codigo" class="codigo-box"></div>
+
+    <!-- Botón de tarjetas -->
+    <button onclick="mostrarTarjeta()">Generar Tarjeta Disney</button>
+    <div id="tarjeta" class="tarjeta-box"></div>
+    
+    <br>
+    <a href="https://www.disneyplus.com/es-419/commerce/redeem" target="_blank" class="redeem-btn">Canjear en Disney+</a>
+    <a href="https://disneyplus.com/comenzar" target="_blank" class="redeem-btn">Activar Disney en TV</a>
+
+    <!-- Botón de crear vix -->
+    <button id="btnGenerarCuentavix">Crear cuenta vix</button>
+    <div id="btnGenerarCuentavix" class="vix-box"></div>
+  </div>
+
+  <script>
+    const codigos = [
+      "VS-PF8RFEXCVBPW37EW", "VS-95UG9X6Z6J9NDAV6", "VS-QJ6WYQNWDEKNFWSW", "VS-3SGGBHH4NW3PDUBU",
+      "VS-N624PP3N552V2CFC", "VS-6NYVEVHD3Q9RYKAX", "VS-YQP44YHSNCGRHKXF", "VS-8WUYQVU6QGU36E4H",
+      "VS-5BF44GCNG63Y9RDB", "VS-TVKTQ8DX3BMKHMUC", "VS-BW6V7RWWE3Z3VFVU", "VS-R4WXWHJU4P2F7FW4",
+      "VS-KH4DMYB43K5NMB6J", "VS-R7EMTC8QZ4P7KGW", "VS-GHAHDGTK5CMDAJH9", "VS-NRA42BSU4AENE4N5",
+      "VS-F6J68A6YJJA29BTV", "VS-3HKR8VZ83N8FA6PQ", "VS-RC2FPQCX44WFEQ6D", "VS-VTRPPCWV6C9FVAP7"
+    ];
+
+    const tarjetas = [
+      "4772890013838323|02|2030|941", "4772890013422656|03|2025|859", "4772890013868148|04|2027|549",
+      "4772890013776416|02|2028|574", "4772890013430238|04|2032|854", "4772890013028362|02|2031|610",
+      "4772890013738846|03|2032|274", "4772890013155611|12|2028|568", "4772890013447315|06|2029|982",
+      "4772890013176013|07|2033|275", "4772890013080140|06|2033|516", "4772890013007135|10|2026|272",
+      "4772890013240074|03|2030|181", "4772890013546041|02|2025|827", "4772890013424512|03|2032|145",
+      "4772890013374014|01|2026|769", "4772890013567724|04|2027|177", "4772890013172145|02|2026|168",
+      "4772890013677127|08|2025|766", "4772890013408473|07|2030|862", "4772890013484771|04|2030|819",
+      "4772890013018652|03|2027|502", "4772890013680568|12|2030|756", "4772890013130648|07|2030|394",
+      "4772890013005543|07|2025|242", "4772890013147725|10|2031|287", "4772890013076056|08|2030|273",
+      "4772890013138427|04|2032|622", "4772890013706744|05|2026|764", "4772890013140118|09|2029|394",
+      "4772890013631454|11|2032|677", "4772890013738580|06|2033|991", "4772890013424322|04|2025|171",
+      "4772890013316833|03|2031|437", "4772890013876653|03|2025|163", "4772890013516820|08|2027|626",
+      "4772890013465846|01|2033|987", "4772890013738457|03|2031|359", "4772890013232725|06|2031|197",
+      "4772890013522315|11|2029|502", "4772890013816402|10|2029|603", "4772890013262631|03|2030|334",
+      "4772890013618378|02|2031|327", "4772890013700507|04|2026|623", "4772890013787660|03|2027|822",
+      "4772890013818036|04|2030|354", "4772890013583036|05|2031|213", "4772890013622420|04|2030|685",
+      "4772890013843117|02|2025|906", "4772890013341518|09|2025|074"
+    ];
+
+    const vixLinks = [
+  "https://vix.com/es-es/partners?Svod=true&token=34b74314-1176-4593-9000-9daa143b8b46&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=6568ac44-1061-4007-87c4-7175a57565b0&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=4d200750-d9cb-43d8-8575-c1512163e8c0&partnerId=mex_izzi&planId=izzi-mx-web-1mo-alacarte&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=0d293dbc-b71b-49e2-a641-5904e7516e5d&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=3184efe0-7499-4562-9799-9613950fbf06&partnerId=mex_izzi&planId=izzi-mx-web-1mo-alacarte-promo&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=e5c6046e-9fb2-4d47-8599-ce6c1648be40&partnerId=mex_izzi&planId=izzi-mx-web-1mo-alacarte&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=b4d91438-d21e-42b0-8fc9-e52e2dbbefe6&partnerId=mex_izzi&planId=izzi-mx-web-1mo-blim&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=c621b663-52b8-4a9b-9fd2-d667f638575f&partnerId=mex_izzi&planId=izzi-mx-web-1mo-video&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=44d42cac-afab-43d4-8206-a7b543cfa393&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=d5e5884b-bb3e-4bf2-ba01-4f1ccfe7e01b&partnerId=mex_izzi&planId=izzi-mx-web-1mo-broadband&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=d02fe784-ab3b-4106-9b2f-bc0ad0be25e0&partnerId=mex_izzi&planId=izzi-mx-web-1mo-alacarte-promo&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=2d99824b-875c-4f74-ab42-b41e79c4236e&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=4e86f113-3c3f-4209-9ebe-0ff16473cae9&partnerId=mex_izzi&planId=izzi-mx-web-1mo-alacarte&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=2c7eff16-6e65-44ca-a3a8-33849b9f1866&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=2329317e-620f-4378-87b4-e110c4989b4c&partnerId=mex_izzi&planId=izzi-mx-web-1mo-blim&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=3aacf2cd-163b-4088-9d14-51f3dcaab902&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=21117175-4e9a-49eb-9dd1-7873bf4e35c2&partnerId=mex_izzi&planId=izzi-mx-web-1mo-broadband&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=a6e9a6fe-ad99-40a7-b457-d6486886b436&partnerId=mex_izzi&planId=izzi-mx-web-1mo-blim&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=6e3fbc9e-59f2-4e45-a375-9cf2528a535b&partnerId=mex_izzi&planId=izzi-mx-web-1mo-alacarte&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=d646859e-c3ed-4d69-a592-a2680294e540&partnerId=mex_izzi&planId=izzi-mx-web-1mo-blim&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=75a62ae0-79bd-4508-9b96-e6e1446e353a&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=50f760a3-bf0d-41a0-8476-09a411a1a6e0&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=d65f4b55-0dde-4bb6-9141-0b065f7795d2&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=9fad6f42-351f-4187-89e6-cc8bc46a0ef7&partnerId=mex_izzi&planId=izzi-mx-web-1mo-blim&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=a4fe29e7-d4ac-4369-9cdb-6c14705e7b50&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=44ff8379-b0f7-4b98-a17e-4810c099ec25&partnerId=mex_izzi&planId=izzi-mx-web-1mo-alacarte&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=a8df8ca1-b4fb-42f2-9899-fb37e674a64f&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=453b4d1a-af8c-4385-8dd9-eb4865018608&partnerId=mex_izzi&planId=izzi-mx-web-1mo-blim&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=e9d80f62-a811-4da1-b8cd-a49a8428f3c0&partnerId=mex_izzi&planId=izzi-mx-web-1mo-bundle&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=3114cda8-bed2-4469-a73d-efcbf1e78812&partnerId=mex_izzi&planId=izzi-mx-web-1mo-broadband&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=8a47bc08-83ba-475e-b711-448c62646934&partnerId=mex_izzi&planId=izzi-mx-web-1mo-alacarte&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=b7200df7-1772-48db-b06a-e19ae630f88b&partnerId=mex_izzi&planId=izzi-mx-web-1mo-broadband&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=1d99da47-27eb-4c41-a833-2bc216797c5b&partnerId=mex_izzi&planId=izzi-mx-web-1mo-blim&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=83e04e52-6c65-4ed9-b991-5baf5e631b6e&partnerId=mex_izzi&planId=izzi-mx-web-1mo-blim&source=bango",
+  "https://vix.com/es-es/partners?Svod=true&token=55a63093-cf98-4e1f-8e4a-fbab4cb46aa6&partnerId=mex_izzi&planId=izzi-mx-web-1mo-broadband&source=bango"
+];
+
+
+    const btnVix = document.getElementById("btnGenerarCuentavix");
+btnVix.addEventListener("click", () => {
+  const indice = Math.floor(Math.random() * vixLinks.length);
+  const url = vixLinks[indice];
+  window.open(url, "_blank");
+});
+
+
+    let tarjetaActual = 0;
+
+    function mostrarCodigo() {
+      const indice = Math.floor(Math.random() * codigos.length);
+      document.getElementById("codigo").textContent = codigos[indice];
+    }
+
+    function mostrarTarjeta() {
+      if (tarjetaActual < tarjetas.length) {
+        document.getElementById("tarjeta").textContent = tarjetas[tarjetaActual];
+        tarjetaActual++;
+      } else {
+        document.getElementById("tarjeta").textContent = "No hay más tarjetas.";
+      }
+    }
+  </script>
+</body>
+</html>
