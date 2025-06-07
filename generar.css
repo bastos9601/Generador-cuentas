@@ -1,97 +1,105 @@
-/* Estilo base */
-body {
-  font-family: Arial, sans-serif;
-  background: #121212;
-  color: #fff;
+/* Fuente moderna y base */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
   min-height: 100vh;
-  padding: 1rem;
-}
-
-/* Contenedor principal */
-.container {
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-  background: #1e1e1e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 10px #00ffcc;
 }
 
-/* Título principal */
-h1 {
-  color: #00ffcc;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-/* Botones principales */
-button {
-  background-color: #00ffcc;
-  border: none;
-  color: #000;
-  padding: 12px 24px;
-  font-size: 16px;
-  margin-top: 10px;
-  border-radius: 6px;
-  cursor: pointer;
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2rem;
   width: 100%;
-  max-width: 300px;
-  transition: background-color 0.3s ease;
+  max-width: 600px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+/* Botones */
+button {
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.2rem;
+  margin: 0.5rem 0.25rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #00ddb3;
+  background-color: #16a085;
+  transform: scale(1.05);
 }
 
-/* Caja del código */
+/* Cajas de código */
 .codigo-box,
-.tarjeta-box {
-  margin-top: 20px;
-  font-size: 1.4rem;
-  font-family: monospace;
-  background-color: #2a2a2a;
+.tarjeta-box,
+.deezer-box,
+.vix-box {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1rem;
+  margin: 1rem 0;
   border-radius: 8px;
-  display: inline-block;
-  width: 100%;
-  word-break: break-word;
+  font-size: 1.1rem;
+  color: #ecf0f1;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Botones de enlaces */
+/* Enlaces */
 .redeem-btn {
-  display: block;
-  margin: 1rem auto 0;
-  text-decoration: none;
-  background-color: #0072e5;
+  display: inline-block;
+  background-color: #3498db;
   color: #fff;
-  padding: 12px;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  max-width: 300px;
+  text-decoration: none;
+  padding: 0.75rem 1.2rem;
+  margin: 0.5rem 0.25rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .redeem-btn:hover {
-  background-color: #005bb5;
+  background-color: #2980b9;
+  transform: scale(1.05);
 }
 
-/* Media Query para dispositivos muy pequeños */
-@media screen and (max-width: 360px) {
-  h1 {
-    font-size: 1.4rem;
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
   }
 
-  button, .redeem-btn {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  .codigo-box, .tarjeta-box {
-    font-size: 1.2rem;
+  button,
+  .redeem-btn {
+    width: 100%;
+    margin: 0.5rem 0;
   }
 }

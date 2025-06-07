@@ -10,6 +10,9 @@
 <body>
   <div class="container">
     <h1>Generador</h1>
+      <!-- Botón de reiniciar -->
+    <button onclick="reiniciarTodo()">Reiniciar Todo</button>
+
 
     <!-- Botón de cupones -->
     <button onclick="mostrarCodigo()">Generar Cupon Disney</button>
@@ -18,6 +21,11 @@
     <!-- Botón de tarjetas -->
     <button onclick="mostrarTarjeta()">Generar Tarjeta Disney</button>
     <div id="tarjeta" class="tarjeta-box"></div>
+
+    <!-- Botón de cuenta Deezer -->
+    <button onclick="mostrarCuentaDeezer()">Generar cuenta Deezer</button>
+<div id="cuentaDeezer" class="deezer-box"></div>
+
     
     <br>
     <a href="https://www.disneyplus.com/es-419/commerce/redeem" target="_blank" class="redeem-btn">Canjear en Disney+</a>
@@ -26,6 +34,12 @@
     <!-- Botón de crear vix -->
     <button id="btnGenerarCuentavix">Crear cuenta vix</button>
     <div id="btnGenerarCuentavix" class="vix-box"></div>
+    
+
+    
+
+
+
   </div>
 
   <script>
@@ -104,6 +118,10 @@ btnVix.addEventListener("click", () => {
 });
 
 
+
+
+
+
     let tarjetaActual = 0;
 
     function mostrarCodigo() {
@@ -119,6 +137,27 @@ btnVix.addEventListener("click", () => {
         document.getElementById("tarjeta").textContent = "No hay más tarjetas.";
       }
     }
+
+    function mostrarCuentaDeezer() {
+  const cuentas = [
+    "CORREO: prometieron66@gmail.com CONTRASEÑA: Alfredo01@",
+    "CORREO: prometieron.66@gmail.com CONTRASEÑA:  Prometieron123@",
+    "CORREO: bastos.hugo01@gmail.com  CONTRASEÑA:  Prometieron123@",
+    "CORREO: prometieron+66@gmail.com  CONTRASEÑA:  Prometieron123@",
+    "CORREO: bastoshugo+01@gmail.com  CONTRASEÑA:  Prometieron123@",
+    "CORREO: adelinacampos999@gmail.com  CONTRASEÑA:  Prometieron123@"
+  ];
+  const aleatoria = cuentas[Math.floor(Math.random() * cuentas.length)];
+  document.getElementById("cuentaDeezer").innerText = aleatoria;
+}
+function reiniciarTodo() {
+  document.getElementById("codigo").innerHTML = "";
+  document.getElementById("tarjeta").innerHTML = "";
+  document.getElementById("cuentaDeezer").innerHTML = "";
+  
+}
+
+
   </script>
 </body>
 </html>
